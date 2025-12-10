@@ -1,0 +1,4 @@
+Git init: Khởi tạo 1 repository của git cho project trên local
+Git add <file_name>: thêm file vào vùng chuẩn bị (Staging stage)
+git add . : thêm tất cả các file mới/ file update vào vùng chuẩn bị (Staging stage)
+git commit -m"message" : Tạo 1 phiên bản với các file mới/ file updated với message để ghi chú rõ phiên bản này phục vụ mục đích gì
