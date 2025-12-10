@@ -3,7 +3,7 @@ let soLeChieuCao;
 
 if (chieuCao < 200) {
   soLeChieuCao = chieuCao % 100;
-} else if ((chieuCao => 200)) {
+} else if ((chieuCao) => 200) {
   soLeChieuCao = (chieuCao % 100) + 100;
 }
 console.log(soLeChieuCao);
