@@ -1,0 +1,21 @@
+1. Câu lệnh: git commit --amend 
+Dùng để update commit hiện tại
+VD: Trong trường hợp commit bị thiếu file ta có thể git add . để thêm các file thiếu
+Sau đó dùng git commit --amend để add các file này vào commit trước đó mà không tạo ra 1 commit mới
+
+2. Câu lệnh: git commit --amend"<message>" 
+Update message của commit hiện tại
+
+3. git restore --staged <file>
+Ta dùng để đưa các file từ staging về working directory
+
+4. git reset HEAD~1
+Ta dùng để reset/ đưa commit ngay commit head về working directory
+VD: ta có các commit được thực hiện theo thứ tự sau:
+A -> B -> C
+=> A là commit HEAD (gốc)
+=> HEAD~1 sẽ là commit B
+=> khi dùng lệnh trên thì cả 2 commit B và C sẽ được đưa về working directory
+
+Nếu dùng HEAD~2 -> sẽ là commit C
+=> Khi dùng HEAD~2 thì chỉ có commit C được đưa về working directory

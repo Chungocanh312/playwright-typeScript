@@ -1,0 +1,56 @@
+a: Tạo 3 file: file1, file2, file 3
+- Local: demo/file1, demo/file2, demo/file3
+- Working directory: None
+- Staging: None
+- Repository: None
+
+b: Chạy lệnh: git init
+- Local: None
+- Working directory: demo/file1, demo/file2, demo/file3
+- Staging: None
+- Repository: None
+
+c: Chạy lệnh: git commit - m"init project"
+- Local: None
+- Working directory: demo/file1, demo/file2, demo/file3
+- Staging: None
+- Repository: None
+
+d: Chạy lệnh: git add file1
+- Local: None
+- Working directory: demo/file2, demo/file3
+- Staging: demo/file1
+- Repository: None
+
+e: Chạy lệnh: git commit -m"add file"
+- Local: None
+- Working directory: demo/file2, demo/file3
+- Staging: None
+- Repository: demo/file1
+
+f: Chạy lệnh: git add . 
+- Local: None
+- Working directory: None
+- Staging: demo/file2, demo/file3
+- Repository: demo/file1
+
+g: Chạy lệnh: git restore --staged file2
+- Local: None
+- Working directory: demo/file2
+- Staging: demo/file3
+- Repository: demo/file1
+
+h: Chạy lệnh: git commit - m"Add all file"
+- Local: None
+- Working directory: file2
+- Staging: 
+- Repository: 
++ demo/file1 - commit "add file" (HEAD)
++ demo/file3 - commit "Add all file"
+
+i: Chạy lệnh: git reset HEAD~1
+- Local: None
+- Working directory: demo/file2, demo/file 3
+- Staging: 
+- Repository: demo/file 1 - commit "add file"
+
