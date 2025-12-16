@@ -3,19 +3,32 @@ Dùng để update commit hiện tại
 VD: Trong trường hợp commit bị thiếu file ta có thể git add . để thêm các file thiếu
 Sau đó dùng git commit --amend để add các file này vào commit trước đó mà không tạo ra 1 commit mới
 
-2. Câu lệnh: git commit --amend"<message>" 
+2. Câu lệnh: git commit --amend -m"<message>" 
 Update message của commit hiện tại
 
 3. git restore --staged <file>
 Ta dùng để đưa các file từ staging về working directory
 
 4. git reset HEAD~1
-Ta dùng để reset/ đưa commit ngay commit head về working directory
+Ta dùng để reset/ đưa commit ngay trước commit head về working directory
 VD: ta có các commit được thực hiện theo thứ tự sau:
 A -> B -> C
-=> A là commit HEAD (gốc)
-=> HEAD~1 sẽ là commit B
-=> khi dùng lệnh trên thì cả 2 commit B và C sẽ được đưa về working directory
+=> C là commit HEAD (gốc). HEAD luôn trỏ tới commit mới nhất.
+=> HEAD~1 sẽ là chính là commit mới nhất => Commit C
+=> khi dùng lệnh trên thì:
+	•	HEAD đang trỏ vào Commit C
+	•	HEAD~1 = parent của C = Commit B
+    Git sẽ:
+	•	Di chuyển HEAD từ C → B
+	•	Commit C bị “undo”
+	•	Changes của Commit C được đưa về working directory (mặc định là --mixed)
+=> Commit B và A vẫn còn trong file repository, không bị đưa về
 
-Nếu dùng HEAD~2 -> sẽ là commit C
-=> Khi dùng HEAD~2 thì chỉ có commit C được đưa về working directory
+Nếu dùng HEAD~2 -> 
+	•	HEAD~2 = parent của parent của C = Commit A
+    Git sẽ:
+	•	Di chuyển HEAD từ C → A
+	•	Commit B và Commit C bị “undo”
+	•	Changes của Commit B + C được đưa về working directory
+    
+=> Khi dùng HEAD~2 thì cả commit B và C sẽ được đưa về working directory

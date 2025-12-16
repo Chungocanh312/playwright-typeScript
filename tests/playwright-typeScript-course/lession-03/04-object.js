@@ -2,7 +2,7 @@
 const car = {
   make: `Toyota`,
   model: `Corolla`,
-  year: `2021`
+  year: 2021
 };
 console.log(car.year);
 
@@ -21,16 +21,16 @@ console.log(person.address.street);
 const student = {
     name: `Anthony McClaren`,
     grades: {
-        math:`9`,
-        english:`8`
+        math: 9,
+        english: 8
     }
 };
 console.log(student[`grades`][`math`]);
 
 // Task 4:
 const setting = {
-    volume: `87`,
-    brightness: `90`
+    volume: 87,
+    brightness: 90
 };
 setting.volume = 50;
 console.log(setting);

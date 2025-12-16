@@ -1,11 +1,11 @@
 Git có 3 vùng:
 - Vùng 1: Working directory : Vùng nháp, các code mới đc implement/  code update  (ta đã save trên local) sẽ nằm ở vùng này
-- Vùng 2: Staging stage: Vùng chuẩn bị, các file ta đã implement sau khi dùng lệnh git add sẽ được đưa vào vùng này
-- Vùng 3: Repositoy: Đây là vùng để lưu các commit (phiên bản) .Sau khi dùng lệnh commit thì ta sẽ tạo ra 1 phiên bản trong repo git của project tại local 
+- Vùng 2: Staging area: Vùng chuẩn bị, các file ta đã implement sau khi dùng lệnh git add sẽ được đưa vào vùng này
+- Vùng 3: Repository: Đây là vùng để lưu các commit (phiên bản) .Sau khi dùng lệnh commit thì ta sẽ tạo ra 1 phiên bản trong repo git của project tại local 
 
 a. Tạo 3 file: file1, file2, file3: 3 file này ở vùng 1
 b. git init => khởi tạo 1 repository của git dưới local
-c. chạy lệnh: git commit -m"init project". => báo lỗi vì chưa có file nào được add vào vùng staging stage
+c. chạy lệnh: git commit -m"init project". => warning "nothing to commit" vì chưa có file nào được add vào vùng staging stage
 d. Chạy lệnh: git add file1 => file 1 sẽ được đưa vào vùng 2
-e. Chạy lệnh: git commit -m"add file1" => 1 phiên bản với file 1 sẽ được tạo ra trong repository của git tại local
-f. Chạy lệnh: git commit -m"add file" => bão lỗi vì chưa có file nào được add vào vùng staging stage
+e. Chạy lệnh: git commit -m"add file1" => 1 phiên bản với file 1 sẽ được tạo ra trong repository của git
+f. Chạy lệnh: git commit -m"add file" => warning "nothing to commit" vì chưa có file nào được add vào vùng staging stage
