@@ -1,0 +1,19 @@
+let userName = `admin`;
+let password = `12345`;
+
+// Toán tử AND (&&)
+if (userName === `admin` && password === `12345`) {
+  console.log(`Đăng nhập thành công`);
+}
+
+// Toán tử OR (||)
+let day = `Saturday`;
+if (day === `Saturday` || day === `Sunday`) {
+  console.log(`Ngày cuối tuần`);
+}
+
+// Toán tử NOT (!)
+let isLoggedIn = false;
+if (!isLoggedIn) {
+  console.log("Vui lòng đăng nhập!");
+}

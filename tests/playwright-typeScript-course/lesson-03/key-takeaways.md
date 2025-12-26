@@ -18,5 +18,5 @@
 4. PascalCase: đặt tên class
 ### 2. Object: Là đối tượng, dùng để lưu trữ tập hợp các giá trị vào cùng một biến hoặc một hằng số
 ### 3. Array: Mảng:Là 1 công cụ trong javaScript dùng để lưu trữ thông tin, danh sách 
-### 4. unction: Là 1 hàm: chứa đoạn code được đặt tên và có thể tái sử dụng, nó được sử dụng để thực hiện 1 nhiệm vụ hoặc 1 tính toán cụ thể.
+### 4. Function: Là 1 hàm: chứa đoạn code được đặt tên và có thể tái sử dụng, nó được sử dụng để thực hiện 1 nhiệm vụ hoặc 1 tính toán cụ thể.
 ### Cách khai báo:function <nameFunction> () {// block code}
