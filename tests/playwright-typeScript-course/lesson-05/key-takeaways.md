@@ -72,7 +72,7 @@ console.log(getRandom());
 
 // Có 1 tham số => có thể bỏ dấu ngoặc tròn:
 const double = (x) => x * 2;
-const square = (y) => y * y;
+const square = y => y * y;
 
 // Vẫn có 1 tham số nhưng ta vẫn muốn giữ dấu ngoặc (tùy style mà bạn muốn):
 const tripple = (x) => x * 3;
@@ -365,7 +365,7 @@ test('handle confirmation dialog', async ({page}) => {
   await page.locator("//button[@id='add-task']").click();
   page.on('dialog',async dialog => dialog.accept()); // lưu ý: code xử lý dialog phải ở trước dòng code có action làm tạo ra dialog đó. Ở đây khi ta click vào delete button => hiển thị dialog
   // lệnh này không cần phải await
-  await page.locator("//button[text()='Delete']");
+  await page.locator("//button[text()='Delete']").click();
 })
 ```
 
