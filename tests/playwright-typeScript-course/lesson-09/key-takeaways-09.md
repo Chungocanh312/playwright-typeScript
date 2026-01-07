@@ -197,5 +197,78 @@ Vì thẻ h1 dùng aria-labelledby = "title" => sẽ lấy text từ thẻ nào 
   <span>Notes</span>
 </h1>
 => Accessible name = "Personal Notes"
+
+test('Demo playwright seletor 4', async ({page}) => {
+    await page.goto(`https://material.playwrightvn.com/01-xpath-register-page.html`);
+    await page.getByRole("radio",{name: "Male", exact : true}).check(); 
+    // dùng exact để chỉ tìm đúng tên = Male, nếu không nó sẽ lấy cả Female trên UI
+    await expect(page.getByRole("radio",{name: "Female"})).toBeChecked();
+})
+
+test('Demo playwright seletor 5', async ({page}) => {
+    await page.goto(`https://material.playwrightvn.com/12-dom-nested.html`);
+    const phoitemText = await page.getByRole("listitem").filter({hasText: "Ph"}).textContent();
+    // Với role = listitem không bắt buộc phải dùng với filter
+    // Tuy nhiên với trường hợp role listitem trả ra toàn bộ các item có trên page thì phải dùng cùng với filter để trách các strict mode
+    console.log(phoitemText)
+})
+
+// 2. page.getByText():
+// Tìm element theo text hiển thị trên trang 
+page.getByText(text,options);
+
+// Tìm chính xác text:
+await page.getByText('Welcome back').click();
+
+// Tìm text có chứa (substring):
+await page.getByText('Welcome', exact: false).click();
+
+// Dùng regex:
+await page.getByText(/welcome/i); // case insensitive
+
+// Kết hợp với các locator khác
+await page.locator('div').getByText('Hello');
+// các locator có thể nối nhau bằng dấu . Được gọi là chaining locator (chain) 
+// => Giống như gọi hàm gọi biến trong 1 class
+
+// 3. page.getByLabel(): Tìm input element thông qua text của thẻ <label> được liên kết với nó 
+page.getByLabel(text,options)
+
+`<!-- HTML -->`
+`<label for = "emal">Email address</label>`
+`<input id = "email" type = "email"</input>`
+
+// Tìm input thông qua label:
+await page.getByLabel('Email address').fill(email);
+
+// Tìm input dựa trên 1 phần text trong thẻ label
+await page.getByLabel('email', {exact: false}).fill(email);
+
+// VD: 
+test('Demo playwright seletor 6', async ({page}) => {
+    await page.goto(`https://material.playwrightvn.com/01-xpath-register-page.html`);
+    await page.getByLabel("Username:").fill("Chu Ngoc Anh");
+})
+
+// 4. page.getByPlaceholder():
+// VD:
+`<input type="email" placeholder="name@example.com"/>`
+
+await page.getByPlaceholder('name@example.com').fill(email);
+
+// 5. page.getByTitle():
+// VD:
+`<span title='Issue count'>25 issues</span>`
+
+await page.getByTitle('Issue count');
+
+// 6. page.getByTestId():
+// Mặc định dùng cho thuộc tính "data-testid"
+//VD:
+`<button data-testid = "directions">Itineraire</button>`
+`<button id = "directions">Itineraire</button>`
+
+await page.setTestIdAttribute('id'); // Dòng này để nói Nói với Playwright rằng: “Từ giờ trở đi, hãy coi attribute id là test id
+await page.getByTestId('directions').click(); // Bắt được button đầu tiên, không bắt được button thứ 2 nếu không có dòng lệnh trên
 ```
 
