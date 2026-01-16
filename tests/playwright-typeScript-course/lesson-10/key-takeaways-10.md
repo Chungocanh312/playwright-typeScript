@@ -302,3 +302,4 @@ Khi nào thì thực hiện refactoring :
     - Smell: Method, function quá dài
     - Smell: quá nhiều parameters trong method, function
     - Smell: class chứa lượng code quá lớn
+
