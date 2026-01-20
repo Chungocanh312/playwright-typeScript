@@ -48,3 +48,95 @@ link chi tiết: `https://material.playwrightvn.com/039-http-method.html`
 - status code: mã trạng thái (200 OK, 404 not found, 500 ...)
 - Headers: thông tin phản hồi
 - Body: Dữ liệu trả về (thường là JSON)
+
+#### API document:
+- Thường dùng swagger để build tài liệu hướng dẫn sử dụng API:
+
+    - Thường bao gồm chi tiết:
+
+        - Thông tin về endpoint, HTTP method, URL, body...
+        - Phổ biến: dùng swagger
+
+#### Giới thiệu về postman:
+- Left Side bar :
+
+    - Collections: tổ chức các API request thành nhóm
+    - Enviroments: quản lý các biến môi trường (dev, staging, production)
+    - History: Lịch sử các request đã gửi
+    - Mock servers: tạo server giả lập
+    - Monitors: theo dõi API tự động
+
+- Right side bar:
+
+    - Documentation
+    - Comments
+    - Code snippets
+
+#### Playwright API Testing
+- Sử dụng request fixture để thực hiện gọi API
+
+    - Gọi các API mà không cần phỉa thực hiện thao tác thông qua trình duyệt
+    - Thực hiện các thao tác gọi API trực tiếp trong code
+
+```typescript
+import {test} from '@playwright/test';
+
+test('Api test cơ bản - response text', async({request}) => {
+    const Url = ''
+
+    const response = await request.get(Url);
+    const responseText = await response.text();
+    console.log(responseText)
+})
+```
+#### request.get/put/patch/delete('link'):
+
+```typescript
+//VD:
+const url = '';
+const response = await request.get(url);
+
+```
+=> lấy kết quả và gán nó vào biến **response**
+
+#### cách bật debug trong VS code:
+tại dòng code mà mình muốn nó sẽ dừng lại tại đó khi chạy
+=> click ở bên cạnh số thứ tự dòng => nó sẽ có chấm đỏ
+
+=> click chuột phải vào biểu tưởng run test (mũi tên xanh nếu trước đó case passed, dấu x đỏ nếu trước đó case failed)
+
+=> chọn debug => sẽ chạy test và dừng ở dòng mình đã đánh dấu
+
+=> khi này ta có thể hover vào các biến để xem biến đó tại dòng đó đang có giá trị gì....
+
+#### đối với response thì có 2 cách ta thường dùng để lấy response:
+- response text: lấy ở dạng string
+- response json: lấy ở dạng object
+=> thường lấy ở dạng object để thực hiện kiểm tra sau này. Sử dụng chain (.) để lấy dữ liệu bên trong json
+
+```typescript
+//VD:
+const url = 'https://material.playwrightvn.com/api/todo-app/v1/todos.php';
+const response = await request.get(url);
+
+const responseText = await response.text();
+const responseJson = await response.json();
+
+// Để chuyển từ 1 file text thành json:
+const responseJson = JSON.parse(responseText);
+```
+
+#### Assertion API testing:
+- Kiểm tra status code trả về
+```typescript
+const response = await request.get(Url);
+expect(response.status()).toBe(200);
+
+// Dùng hàm length để verify số phần tử trả về:
+const response = await request.get(Url);
+const resonseJson = await response.json();
+expect(responseJson.<tên data chứa các phần từ>.length).toBe(10);
+```
+
+#### Authentication:
+
